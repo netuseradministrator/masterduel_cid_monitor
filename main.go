@@ -118,7 +118,7 @@ func readMemory(processHandle windows.Handle, address uintptr, size int) ([]byte
 }
 
 // 全局的多级指针偏移表
-var offsets = []uintptr{0x50, 0x80, 0x230, 0xB8, 0x0, 0xC8, 0x150, 0x21C}
+var offsets = []uintptr{0xB8, 0x0, 0x50, 0x40, 0xC8, 0x150, 0x21C}
 
 // resolvePointer：多级指针解析
 func resolvePointer(processHandle windows.Handle, baseAddress uintptr, offsets []uintptr) (uintptr, error) {
@@ -164,7 +164,7 @@ func initMemoryMonitor() (windows.Handle, uintptr, error) {
 	processName := "masterduel.exe"
 	moduleName := "GameAssembly.dll"
 	// 新的基址偏移
-	offset := uintptr(0x02E16288)
+	offset := uintptr(0x02E13350)
 
 	// 获取进程 ID
 	pid, err := getProcessID(processName)
